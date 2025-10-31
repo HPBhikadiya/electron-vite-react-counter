@@ -1,96 +1,27 @@
-import { useState } from 'react';
-import {
-  Container,
-  Typography,
-  Box,
-  Button,
-  Paper,
-  Stack,
-} from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import RemoveIcon from '@mui/icons-material/Remove';
-import RestartAltIcon from '@mui/icons-material/RestartAlt';
-
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Dashboard from './pages/Dashboard';
+import Inventory from './pages/Inventory';
+import Categories from './pages/Categories';
+import Orders from './pages/Orders';
+import Users from './pages/Users';
+import Analytics from './pages/Analytics';
+import Settings from './pages/Settings';
 function App() {
-  const [count, setCount] = useState(0);
-
-  const increment = () => setCount((count) => count + 1);
-  const decrement = () => setCount((count) => count - 1);
-  const reset = () => setCount(0);
-
   return (
-    <Container maxWidth="sm">
-      <Box
-        sx={{
-          minHeight: '100vh',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        <Paper
-          elevation={3}
-          sx={{
-            p: 4,
-            textAlign: 'center',
-            borderRadius: 2,
-          }}
-        >
-          <Typography variant="h3" component="h1" gutterBottom>
-            Simple Counter
-          </Typography>
-          
-          <Typography
-            variant="h1"
-            component="div"
-            sx={{
-              my: 4,
-              color: 'primary.main',
-              fontWeight: 'bold',
-            }}
-          >
-            {count}
-          </Typography>
-
-          <Stack
-            direction="row"
-            spacing={2}
-            justifyContent="center"
-            sx={{ mt: 3 }}
-          >
-            <Button
-              variant="contained"
-              color="error"
-              startIcon={<RemoveIcon />}
-              onClick={decrement}
-              size="large"
-            >
-              Decrement
-            </Button>
-            
-            <Button
-              variant="outlined"
-              startIcon={<RestartAltIcon />}
-              onClick={reset}
-              size="large"
-            >
-              Reset
-            </Button>
-            
-            <Button
-              variant="contained"
-              color="success"
-              startIcon={<AddIcon />}
-              onClick={increment}
-              size="large"
-            >
-              Increment
-            </Button>
-          </Stack>
-        </Paper>
-      </Box>
-    </Container>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Dashboard />} />
+          <Route path="inventory" element={<Inventory />} />
+          <Route path="categories" element={<Categories />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="users" element={<Users />} />
+          <Route path="analytics" element={<Analytics />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
