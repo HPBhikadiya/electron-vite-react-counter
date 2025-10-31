@@ -25,7 +25,6 @@ Thumbs.db
 Desktop.ini
 
 # IDE and editor files
-.vscode/
 .idea/
 *.swp
 *.swo
@@ -63,3 +62,7 @@ coverage/
 *.temp
 .cache/
 
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+.gitignore
